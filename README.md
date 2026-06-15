@@ -9,8 +9,8 @@ Accurate assessment of disorders of consciousness (DOC), particularly distinguis
 
 Model Components
 
-1)GCA: Topology-preserving cross-attention for structured fusion of spectral (PSD/DE) and connectivity (PLV/wPLI) features.
+1.GCA: Topology-preserving cross-attention for structured fusion of spectral (PSD/DE) and connectivity (PLV/wPLI) features.
 
-2)GASS: Bidirectional state-space modeling along channel and temporal axes with adaptive gating.
+2.GASS: Bidirectional state-space modeling along channel and temporal axes with adaptive gating.
 
-3)Topology Design: Maintains channel–frequency structure throughout the pipeline for physiologically meaningful representation.
+3.Topology Design: Maintains channel–frequency structure throughout the pipeline for physiologically meaningful representation.
