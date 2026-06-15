@@ -8,6 +8,7 @@ Accurate assessment of disorders of consciousness (DOC), particularly distinguis
 <img width="4247" height="932" alt="overall_picture" src="https://github.com/user-attachments/assets/0e686c37-c8cc-4d49-87cd-93717a0eb470" />
 
 Model Components
+
 1)GCA: Topology-preserving cross-attention for structured fusion of spectral (PSD/DE) and connectivity (PLV/wPLI) features.
 
 2)GASS: Bidirectional state-space modeling along channel and temporal axes with adaptive gating.
