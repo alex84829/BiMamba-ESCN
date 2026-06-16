@@ -14,3 +14,9 @@ Model Components
 2.GASS: Bidirectional state-space modeling along channel and temporal axes with adaptive gating.
 
 3.Topology Design: Maintains channel–frequency structure throughout the pipeline for physiologically meaningful representation.
+
+## Usage
+
+Installation
+1) Clone the repository:<br />
+```git clone https://github.com/alex84829/BiMamba-ESCN.git``` <br /><br />
