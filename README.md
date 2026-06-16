@@ -23,3 +23,10 @@ Installation
 
 2) Install the required dependencies<sup></sup>:<br />
 ```pip install -r BiMamba-ESCN/requirements.txt```
+
+Run training
+
+Run the following command to train the model:
+
+```bash
+python training/train.py
