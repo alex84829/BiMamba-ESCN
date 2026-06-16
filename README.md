@@ -20,3 +20,6 @@ Model Components
 Installation
 1) Clone the repository:<br />
 ```git clone https://github.com/alex84829/BiMamba-ESCN.git``` <br /><br />
+
+2) Install the required dependencies<sup></sup>:<br />
+```pip install -r BiMamba-ESCN/requirements.txt```
