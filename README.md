@@ -30,11 +30,17 @@ Run the following command to train the model:
 
 ```bash
 python training/train.py
+```
 
 ## Citation <a name="citation"></a>
 "BiMamba-ESCN: Topology-Preserving Bidirectional State-Space Modeling for EEG-Based Assessment of Disorders of Consciousness" has been submitted to the journal Transactions on Biomedical Engineering.
+
 @misc{BiMamba-ESCN,
+
   title={BiMamba-ESCN: Topology-Preserving Bidirectional State-Space Modeling for EEG-Based Assessment of Disorders of Consciousness},
+
 author={Feng Gao, Linbo Qing, Lindong Li, Li Gao},
+
   journal={IEEE Transactions on Biomedical Engineering},
+
 }
