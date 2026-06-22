@@ -1,1 +1,36 @@
+# BiMamba-ESCN default configuration
 
+data:
+  mcs_dir: "D:/pythonproject/MCA/MCS UWS/test2/test mcs"
+  uws_dir: "D:/pythonproject/MCA/MCS UWS/test2/health_46000"
+
+training:
+  n_splits: 10
+  epochs: 80
+  batch_size: 32
+  val_batch_size: 64
+  lr: 0.0003
+  weight_decay: 0.0001
+  seed: 42
+
+sequence:
+  seq_len: 5
+  stride: 1
+  pad_last: false
+
+threshold:
+  grid_n: 400
+  fallback: 0.5
+
+vote:
+  repeat: 50
+  k_base: [2, 4, 8, 16]
+
+model:
+  chans: 10
+  bands: 5
+  d_state: 32
+  d_model: 64
+  fusion: "mean"
+  num_classes: 2
+  dropout: 0.3
