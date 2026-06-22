@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Complete BiMamba-ESCN model."""
-
 import torch
 import torch.nn as nn
 from .gca import GCA
@@ -8,14 +5,6 @@ from .gass import GASS
 
 
 class BiMambaESCN(nn.Module):
-    """
-    Complete article-aligned BiMamba-ESCN.
-
-    Input:
-      psd/de/plv/wpli: [B, T, C, F]
-    Output:
-      logits: [B, num_classes]
-    """
 
     def __init__(
         self,
