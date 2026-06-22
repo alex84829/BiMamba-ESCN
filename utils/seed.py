@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Reproducibility utilities."""
-
 import random
 import numpy as np
 import torch
