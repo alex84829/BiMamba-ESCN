@@ -7,10 +7,6 @@ import torch.nn.functional as F
 
 
 class DualGate(nn.Module):
-    """
-    DualGate with residual aggregation and feature-wise LayerNorm:
-      U0 = LN((Y_GCA * s_c * s_f) + Y_GCA)
-    """
 
     def __init__(self, chans: int = 10, bands: int = 5, reduction: int = 4):
         super().__init__()
@@ -46,18 +42,6 @@ class DualGate(nn.Module):
 
 
 class BidirectionalSSMBlock(nn.Module):
-    """
-    Article-aligned bidirectional state-space block for one scanned axis.
-
-    External interface:
-      Input shape:  [B_axis, L, F]
-      Output shape: [B_axis, L, F]
-
-    Internal latent representation:
-      F -> d_model -> Conv1D -> SiLU -> Linear -> Split
-      -> bidirectional selective SSM in d_model-dimensional latent space
-      -> gated residual integration -> projection back to F.
-    """
 
     def __init__(self, bands: int = 5, d_model: int = 64, d_state: int = 32, fusion: str = "mean"):
         super().__init__()
@@ -146,14 +130,6 @@ class BidirectionalSSMBlock(nn.Module):
 
 
 class GASS(nn.Module):
-    """
-    Gated Axial State-Space Module:
-      GCA output [B,T,C,F]
-      -> DualGate on [B*T,C,F]
-      -> bidirectional channel-axis SSM with internal d_model
-      -> bidirectional temporal-axis SSM on [B*C,T,F]
-      -> restore to [B,T,C,F]
-    """
 
     def __init__(
         self,
