@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Metrics and patient-level voting utilities."""
-
 import numpy as np
 import pandas as pd
 from sklearn.metrics import confusion_matrix, f1_score, roc_auc_score
@@ -65,7 +62,7 @@ def select_threshold_youden_j(y_true, y_prob, n_grid=400, fallback=0.5):
 
 
 def groupwise_majority_vote(y_true_unit, y_prob_unit, group_ids, threshold=0.5):
-    """Patient-level majority voting with mean-probability tie-breaking."""
+   
     y = np.asarray(y_true_unit).astype(int)
     p = np.asarray(y_prob_unit).astype(float)
     g = np.asarray(group_ids)
