@@ -1,8 +1,8 @@
 # BiMamba-ESCN default configuration
 
 data:
-  mcs_dir: "D:/pythonproject/MCA/MCS UWS/test2/test mcs"
-  uws_dir: "D:/pythonproject/MCA/MCS UWS/test2/health_46000"
+  mcs_dir: "path/to/MCS"
+  uws_dir: "path/to/UWS"
 
 training:
   n_splits: 10
