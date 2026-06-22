@@ -1,16 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Feature extraction helpers for BiMamba-ESCN.
-
-The training code expects each subject/recording to be saved as an .npz file with keys:
-  psd:      [n_epochs, C, F]
-  de_bands: [n_epochs, C, F]
-  plv:      [n_epochs, C*C, F]
-  wpli:     [n_epochs, C*C, F]
-
-This file provides lightweight NumPy/SciPy implementations for already-epoched EEG arrays.
-For full clinical preprocessing, apply your MNE pipeline first, then call these functions.
-"""
-
 from typing import Dict, Tuple
 import numpy as np
 from scipy.signal import welch, hilbert, butter, sosfiltfilt, iirnotch, filtfilt
@@ -36,7 +23,6 @@ def notch_filter(data: np.ndarray, sfreq: float = 256.0, notch_freq: float = 50.
 
 
 def compute_psd_bands(epochs: np.ndarray, sfreq: float = 256.0, bands: Dict[str, Tuple[float, float]] = FREQ_BANDS) -> np.ndarray:
-    """Compute band PSD using Welch. Input: [E, C, samples]. Output: [E, C, F]."""
     freqs, pxx = welch(epochs, fs=sfreq, nperseg=min(int(sfreq * 2), epochs.shape[-1]), axis=-1)
     out = []
     for low, high in bands.values():
@@ -46,7 +32,6 @@ def compute_psd_bands(epochs: np.ndarray, sfreq: float = 256.0, bands: Dict[str,
 
 
 def compute_de_bands(epochs: np.ndarray, sfreq: float = 256.0, bands: Dict[str, Tuple[float, float]] = FREQ_BANDS) -> np.ndarray:
-    """Compute differential entropy per band. Input: [E, C, samples]. Output: [E, C, F]."""
     outs = []
     for low, high in bands.values():
         x = bandpass_filter(epochs, sfreq=sfreq, l_freq=low, h_freq=high)
@@ -63,14 +48,6 @@ def _band_phase(epochs: np.ndarray, sfreq: float, low: float, high: float) -> np
 
 
 def compute_plv_wpli(epochs: np.ndarray, sfreq: float = 256.0, bands: Dict[str, Tuple[float, float]] = FREQ_BANDS):
-    """
-    Compute pair-wise PLV and wPLI.
-
-    Input:
-      epochs: [E, C, samples]
-    Output:
-      plv, wpli: [E, C*C, F]
-    """
     e, c, _ = epochs.shape
     plv_all, wpli_all = [], []
     for low, high in bands.values():
