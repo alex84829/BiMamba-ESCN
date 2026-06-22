@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Subject-wise 10-fold training and evaluation for BiMamba-ESCN."""
-
 import argparse
 import numpy as np
 import pandas as pd
