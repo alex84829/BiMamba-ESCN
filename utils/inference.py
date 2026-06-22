@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Inference helpers."""
-
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 
