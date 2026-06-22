@@ -8,15 +8,6 @@ import torch.nn.functional as F
 
 
 class GCA(nn.Module):
-    """
-    Grouped cross-attention:
-      PSD <-> DE, PLV <-> wPLI, then local <-> global.
-
-    Input tensors:
-      psd/de/plv/wpli: [B_eff, C, F]
-    Output:
-      fused representation: [B_eff, C, F]
-    """
 
     def __init__(self, feature_dim: int = 5, dropout: float = 0.0):
         super().__init__()
@@ -29,7 +20,7 @@ class GCA(nn.Module):
 
     @staticmethod
     def cross_attention_channelwise(x1: torch.Tensor, x2: torch.Tensor) -> torch.Tensor:
-        """Channel-wise cross-attention preserving [B_eff, C, F]."""
+        
         d = x1.shape[-1]
         scores = torch.matmul(x1, x2.transpose(-1, -2)) / math.sqrt(d)
         attn = F.softmax(scores, dim=-1)
