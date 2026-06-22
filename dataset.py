@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Dataset and leakage-free sequence construction utilities for BiMamba-ESCN."""
-
 import os
 from dataclasses import dataclass
 from typing import Dict, Tuple, List
@@ -69,14 +66,6 @@ def collect_files(mcs_dir: str, uws_dir: str):
 
 
 def pool_pair_to_nodal_strength(x: np.ndarray, chans: int = DEFAULT_CHANS, bands: int = DEFAULT_BANDS) -> np.ndarray:
-    """
-    Convert pair-wise connectivity features to nodal-strength representation.
-
-    Expected input:
-      x: [n_epochs, C*C, F]
-    Output:
-      x_node: [n_epochs, C, F]
-    """
     if x.ndim != 3 or x.shape[1] != chans * chans or x.shape[2] != bands:
         raise ValueError(f"Expected connectivity shape [n_epochs,{chans*chans},{bands}], got {x.shape}")
     x = x.reshape(-1, chans, chans, bands)
@@ -84,15 +73,6 @@ def pool_pair_to_nodal_strength(x: np.ndarray, chans: int = DEFAULT_CHANS, bands
 
 
 def load_frames_raw(fp: str, chans: int = DEFAULT_CHANS, bands: int = DEFAULT_BANDS):
-    """
-    Load one .npz file without normalization.
-
-    Required keys:
-      psd:      [n_epochs, C, F]
-      de_bands: [n_epochs, C, F]
-      plv:      [n_epochs, C*C, F]
-      wpli:     [n_epochs, C*C, F]
-    """
     lab, pid, fid = parse_label_pid_fid(fp)
 
     with np.load(fp) as d:
@@ -127,7 +107,6 @@ def expand_files(file_subset: np.ndarray, chans: int = DEFAULT_CHANS, bands: int
 
 @dataclass
 class FoldNormalizer:
-    """Per-feature channel-by-band normalizer fitted on training epochs only."""
 
     mean_: Dict[str, np.ndarray]
     std_: Dict[str, np.ndarray]
@@ -153,7 +132,6 @@ class FoldNormalizer:
 
 
 def pack_sequences_by_file(psd, de, plv, wpli, y, pid, fid, seq_len=5, stride=1, pad_last=False):
-    """Pack epoch-level features into temporal sequences without crossing files."""
     psd = np.asarray(psd)
     de = np.asarray(de)
     plv = np.asarray(plv)
