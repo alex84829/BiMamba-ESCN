@@ -29,7 +29,7 @@ Run training
 Run the following command to train the model:
 
 ```bash
-python training/train.py
+python train.py
 ```
 
 ## Citation <a name="citation"></a>
