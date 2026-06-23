@@ -41,6 +41,6 @@ python train.py
 
 author={Feng Gao, Linbo Qing, Lindong Li, Li Gao},
 
-  journal={IEEE Transactions on Biomedical Engineering},
+  note = {Manuscript submitted for publication},
 
 }
