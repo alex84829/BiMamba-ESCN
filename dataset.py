@@ -11,15 +11,6 @@ DEFAULT_BANDS = 5
 
 
 def parse_label_pid_fid(fp: str) -> Tuple[int, str, str]:
-    """
-    Expected filename examples:
-      MCS_001_1.npz / UWS_001_0.npz
-
-    Returns:
-      label: MCS=1, UWS=0
-      pid:   MCS_001 or UWS_001
-      fid:   stem, e.g., MCS_001_1
-    """
     base = os.path.basename(fp)
     stem = os.path.splitext(base)[0]
     parts = stem.split("_")
